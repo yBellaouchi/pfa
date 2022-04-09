@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OperationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Entity\Medecin;
 #[ORM\Entity(repositoryClass: OperationRepository::class)]
@@ -15,6 +17,14 @@ class Operation extends RendezVous
 
     #[ORM\Column(type: 'string', length: 255)]
     private $TypeOperation;
+
+    #[ORM\OneToMany(mappedBy: 'operation', targetEntity: chambre::class)]
+    private $chambre;
+
+    public function __construct()
+    {
+        $this->chambre = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -79,6 +89,36 @@ class Operation extends RendezVous
     public function setPatient($Patient)
     {
         $this->RendezVous->Patient= $Patient;
+    }
+
+    /**
+     * @return Collection<int, chambre>
+     */
+    public function getChambre(): Collection
+    {
+        return $this->chambre;
+    }
+
+    public function addChambre(chambre $chambre): self
+    {
+        if (!$this->chambre->contains($chambre)) {
+            $this->chambre[] = $chambre;
+            $chambre->setOperation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChambre(chambre $chambre): self
+    {
+        if ($this->chambre->removeElement($chambre)) {
+            // set the owning side to null (unless already changed)
+            if ($chambre->getOperation() === $this) {
+                $chambre->setOperation(null);
+            }
+        }
+
+        return $this;
     }
 
 
