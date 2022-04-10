@@ -14,7 +14,7 @@ class Admin extends User
     protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Name;
+    private $FullName;
 
     public function getId(): ?int
     {
@@ -23,12 +23,12 @@ class Admin extends User
 
     public function getName(): ?string
     {
-        return $this->Name;
+        return $this->FullName;
     }
 
-    public function setName(string $Name): self
+    public function setName(string $FullName): self
     {
-        $this->Name = $Name;
+        $this->FullName = $FullName;
 
         return $this;
     }
