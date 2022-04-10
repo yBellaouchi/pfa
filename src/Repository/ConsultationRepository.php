@@ -25,24 +25,24 @@ class ConsultationRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Consultation $entity)
+    public function add(Consultation $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
-
+        if ($flush) {
             $this->_em->flush();
-
+        }
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Consultation $entity)
+    public function remove(Consultation $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-
+        if ($flush) {
             $this->_em->flush();
-
+        }
     }
 
     // /**

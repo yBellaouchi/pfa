@@ -25,24 +25,24 @@ class AdminRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Admin $entity)
+    public function add(Admin $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
-
+        if ($flush) {
             $this->_em->flush();
-
+        }
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Admin $entity )
+    public function remove(Admin $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-
+        if ($flush) {
             $this->_em->flush();
-
+        }
     }
 
     // /**

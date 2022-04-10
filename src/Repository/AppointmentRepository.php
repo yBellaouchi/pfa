@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Infermier;
+use App\Entity\Appointment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Infermier|null find($id, $lockMode = null, $lockVersion = null)
- * @method Infermier|null findOneBy(array $criteria, array $orderBy = null)
- * @method Infermier[]    findAll()
- * @method Infermier[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Appointment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Appointment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Appointment[]    findAll()
+ * @method Appointment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class InfermierRepository extends ServiceEntityRepository
+class AppointmentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Infermier::class);
+        parent::__construct($registry, Appointment::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Infermier $entity, bool $flush = true): void
+    public function add(Appointment $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class InfermierRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Infermier $entity, bool $flush = true): void
+    public function remove(Appointment $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class InfermierRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Infermier[] Returns an array of Infermier objects
+    //  * @return Appointment[] Returns an array of Appointment objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
+            ->orderBy('a.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class InfermierRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Infermier
+    public function findOneBySomeField($value): ?Appointment
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

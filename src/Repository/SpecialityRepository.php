@@ -2,30 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\Infermier;
+use App\Entity\Speciality;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Infermier|null find($id, $lockMode = null, $lockVersion = null)
- * @method Infermier|null findOneBy(array $criteria, array $orderBy = null)
- * @method Infermier[]    findAll()
- * @method Infermier[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Speciality|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Speciality|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Speciality[]    findAll()
+ * @method Speciality[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class InfermierRepository extends ServiceEntityRepository
+class SpecialityRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Infermier::class);
+        parent::__construct($registry, Speciality::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Infermier $entity, bool $flush = true): void
+    public function add(Speciality $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -37,7 +37,7 @@ class InfermierRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Infermier $entity, bool $flush = true): void
+    public function remove(Speciality $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -46,15 +46,15 @@ class InfermierRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Infermier[] Returns an array of Infermier objects
+    //  * @return Speciality[] Returns an array of Speciality objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
+            ->orderBy('s.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -63,10 +63,10 @@ class InfermierRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Infermier
+    public function findOneBySomeField($value): ?Speciality
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

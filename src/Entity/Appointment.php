@@ -2,44 +2,29 @@
 
 namespace App\Entity;
 
-use App\Repository\ObservationRepository;
+use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ObservationRepository::class)]
-class Observation
+#[ORM\Entity(repositoryClass: AppointmentRepository::class)]
+class Appointment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $Description;
+    Protected $id;
 
     #[ORM\Column(type: 'datetime')]
-    private $Date;
+    Protected $Date;
 
-    #[ORM\ManyToOne(targetEntity: Doctor::class, inversedBy: 'observations')]
-    private $Doctor;
+    #[ORM\ManyToOne(targetEntity: Doctor::class, inversedBy: 'appointments')]
+    Protected $Doctor;
 
-    #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'observations')]
-    private $Patient;
+    #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'appointments')]
+    Protected $Patient;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->Description;
-    }
-
-    public function setDescription(string $Description): self
-    {
-        $this->Description = $Description;
-
-        return $this;
     }
 
     public function getDate(): ?\DateTimeInterface

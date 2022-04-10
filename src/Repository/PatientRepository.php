@@ -25,10 +25,10 @@ class PatientRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Patient $entity, bool $flush=null)
+    public function add(Patient $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
-        if ($flush=null) {
+        if ($flush) {
             $this->_em->flush();
         }
     }
@@ -37,10 +37,10 @@ class PatientRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Patient $entity, bool $flush =null)
+    public function remove(Patient $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-        if ($flush=null) {
+        if ($flush) {
             $this->_em->flush();
         }
     }

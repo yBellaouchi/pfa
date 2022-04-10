@@ -25,24 +25,24 @@ class OperationRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Operation $entity)
+    public function add(Operation $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
-
+        if ($flush) {
             $this->_em->flush();
-
+        }
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Operation $entity)
+    public function remove(Operation $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
-
+        if ($flush) {
             $this->_em->flush();
-
+        }
     }
 
     // /**
