@@ -18,7 +18,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 #[Route('/patient')]
 class PatientController extends AbstractController
 {
-    #[Route('/', name: 'app_patient_index')]
+    
+ /**
+     * @Route("/", name="app_patient_index")
+     *
+     */
     public function index(Request $request,EntityManagerInterface $entityManager): Response
     {
         $patient = new Patient();
@@ -43,14 +47,18 @@ class PatientController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_patient_new', methods: ['GET', 'POST'])]
+     /**
+     * @Route("/new", name="app_patient_new")
+     *
+     */
     public function new(Request $request, PatientRepository $patientRepository): Response
     {
         $patient = new Patient();
         $form = $this->createForm(PatientType::class, $patient);
         $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        // dd($form);
+        if ($form->isSubmitted()&& $form->isValid()) {
+            // dd($form);
             $patientRepository->add($patient);
             return $this->redirectToRoute('app_patient_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -61,7 +69,11 @@ class PatientController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_patient_show', methods: ['GET'])]
+  
+     /**
+     * @Route("/{id}", name="app_patient_show")
+     *
+     */
     public function show(Patient $patient): Response
     {
         return $this->render('patient/show.html.twig', [
@@ -86,6 +98,33 @@ class PatientController extends AbstractController
         ]);
     }
 
+ /**
+     * @Route("/addPatient/{id}", name="addPatient")
+     *
+     */
+   
+    public function addPatient(Request $request, EntityManagerInterface $entityManager):Response{
+   
+       $patient=new Patient();
+
+        $form = $this->createForm(PatientType::class, $patient);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid() ){
+         
+            $entityManager->persist($patient);
+        $entityManager->flush();
+     
+        
+        
+        return $this->redirect($this->generateUrl("app_patient_index"));
+            
+      
+        } 
+        return $this->render('patient/_form.html.twig', [
+            'patient' => $patient,
+            'form' => $form->createView()
+        ]);
+    }
     /**
      * @Route("/editPatient/{id}", name="editPatient")
      *
@@ -130,18 +169,18 @@ class PatientController extends AbstractController
             
             
             }
-    #[Route('/{id}', name: 'app_patient_delete', methods: ['POST'])]
-    public function delete(Request $request, $id, Patient $patient,EntityManagerInterface $entityManager, PatientRepository $patientRepository): Response
-    {
-        $patient = $entityManager->getRepository(produit::class)->find($id);
-        $entityManager->remove($patient);
-        $patientRepository->remove($patient);
+    // #[Route('/{id}', name: 'app_patient_delete', methods: ['POST'])]
+    // public function delete(Request $request, $id, Patient $patient,EntityManagerInterface $entityManager, PatientRepository $patientRepository): Response
+    // {
+    //     $patient = $entityManager->getRepository(produit::class)->find($id);
+    //     $entityManager->remove($patient);
+    //     $patientRepository->remove($patient);
 
-        if ($this->isCsrfTokenValid('delete'.$patient->getId(), $request->request->get('_token'))) {
-            $patientRepository->remove($patient);
-        }
+    //     if ($this->isCsrfTokenValid('delete'.$patient->getId(), $request->request->get('_token'))) {
+    //         $patientRepository->remove($patient);
+    //     }
 
-        return $this->redirectToRoute('app_patient_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_patient_index', [], Response::HTTP_SEE_OTHER);
+    // }
     
 }

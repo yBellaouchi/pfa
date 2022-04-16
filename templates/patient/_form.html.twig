@@ -3,11 +3,10 @@
  
 <div class="container" >
        
-            <div class="col-sm-8 center-block" >
+ <div class="col-sm-8 center-block" >
 
-                <form>
-                    
-                    <div class="body">
+               
+            <div class="body">
                         <div class="form-group">
                  {{ form_label(form.FirstName) }}
                 {{ form_widget(form.FirstName, {'attr': {'class': 'form-control'}}) }}
@@ -38,19 +37,19 @@
                 {{ form_help(form.Tel) }}
                 {{ form_errors(form.Tel) }}
                         </div>
-                        
+             </div>
+                    
+                    
                     <div class="footer">
                         
-                         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+                         <button class="btn btn-primary" >{{ button_label|default('Save') }}</button>
                         
                         
                     </div>
-                </form>
+                
             </div>
-         </div>
-    </div>
-
-
+ </div>
+    
 {{ form_end(form) }}
 {# ModalAdd #}
  {#   #}
