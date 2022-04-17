@@ -24,11 +24,11 @@ margin-right: 0px;
                     
 
                     <div>
-                       <a href="{{ path('app_patient_new') }}"  class="btn btn-lg btn-info"><i class="material-icons">&#xE147;</i> <span>Add New Patient</span></a>
+                       <a href="{{ path('add_patient') }}"  class="btn btn-lg btn-info"><i class="material-icons">&#xE147;</i> <span>Add New Patient</span></a>
                    </div>
                      <div class="input-group-append" style="margin-left:600px;">
                    
-                       {{ form_widget(form.FirstName, {'attr': {'class': 'input-group-append','placeholder': '      search  patient'}}) }}
+                       {{ form_widget(form.FirstName, {'attr': {'class': 'input-group-append','placeholder': '   search  patient'}}) }}
                        {{ form_help(form.FirstName) }}
                        {{ form_errors(form.FirstName) }}
                       
@@ -79,14 +79,15 @@ margin-right: 0px;
                             <td>{{ patient.Gender }}</td>
                             <td>{{ patient.Tel }}</td>
                             <td >
-                             <a href="{{ path('app_patient_show', {'id': patient.id}) }}" class="glyphicon glyphicon-cog"><i style="font-size:24px" class="fa" title="Show">&#xf007;</i></a>
+                             <a href="{{ path('show_patient', {'id': patient.id}) }}" class="glyphicon glyphicon-cog"><i style="font-size:24px" class="fa" title="Show">&#xf007;</i></a>
                                 <a href="editPatient/{{patient.id}}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                               <a href="deletePatient/{{patient.id}}" data-toggle="modal" data-target="#delete{{ patient.id}}"class="edit" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                               {# <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a> #}
                             </td>
                         </tr>
 
- {{ include('patient/_delete_form.html.twig') }}
+ {{ include('patient/_delete_modal.html.twig') }}
+ 
 
 
   {% endfor %}

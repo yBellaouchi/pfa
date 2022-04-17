@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\InfermierRepository;
+use App\Repository\NurseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: InfermierRepository::class)]
+#[ORM\Entity(repositoryClass:NurseRepository::class)]
 class Nurse
 {
     #[ORM\Id]
@@ -24,7 +24,10 @@ class Nurse
     private $Cin;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $Telephone;
+    private $Tel;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $Gender;
 
     public function getId(): ?int
     {
@@ -32,7 +35,18 @@ class Nurse
     }
 
    
+    public function getGender(): ?string
+    {
+        return $this->Gender;
+    }
+    
 
+    public function setGender(string $Gender): self
+    {
+        $this->Gender = $Gender;
+
+        return $this;
+    }
     public function getFirstName(): ?string
     {
         return $this->FirstName;
@@ -69,14 +83,14 @@ class Nurse
         return $this;
     }
 
-    public function getTelephone(): ?string
+    public function getTel(): ?string
     {
-        return $this->Telephone;
+        return $this->Tel;
     }
 
-    public function setTelephone(string $Telephone): self
+    public function setTel(string $Tel): self
     {
-        $this->Telephone = $Telephone;
+        $this->Tel = $Tel;
 
         return $this;
     }
