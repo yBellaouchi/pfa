@@ -1,0 +1,55 @@
+{{ form_start(form) }}
+    {# {{ form_widget(form) }} #}
+ 
+<div class="container" >
+       
+ <div class="col-sm-8 center-block" >
+
+               
+            <div class="body">
+                        <div class="form-group">
+                 {{ form_label(form.FirstName) }}
+                {{ form_widget(form.FirstName, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.FirstName) }}
+                {{ form_errors(form.FirstName) }}
+                        </div>
+                        <div class="form-group">
+                           {{ form_label(form.LastName) }}
+                {{ form_widget(form.LastName, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.LastName) }}
+                {{ form_errors(form.LastName) }}
+                        </div>
+                        <div class="form-group">
+                 {{ form_label(form.Cin) }}
+                {{ form_widget(form.Cin, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.Cin) }}
+                {{ form_errors(form.Cin) }}
+                        </div>
+                          <div class="form-group">
+                 {{ form_label(form.Gender) }}
+                {{ form_widget(form.Gender , {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.Gender) }}
+                {{ form_errors(form.Gender) }}
+                        </div>
+                          <div class="form-group">
+                 {{ form_label(form.Tel) }}
+                {{ form_widget(form.Tel , {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.Tel) }}
+                {{ form_errors(form.Tel) }}
+                        </div>
+             </div>
+                    
+                    
+                    <div class="footer">
+                        
+                         <button class="btn btn-primary" >{{ button_label|default('Save') }}</button>
+                        
+                        
+                    </div>
+                
+            </div>
+ </div>
+    
+{{ form_end(form) }}
+{# ModalAdd #}
+ {#   #}
