@@ -5,22 +5,32 @@ namespace App\Entity;
 use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AppointmentRepository::class)]
+
+
+/**
+ * 
+ * 
+ * @ORM\Entity
+ * @InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"appointment" = "Appointment", "consultation" = "Consultation", "operation" = "Operation"})
+ * @ORM\Entity(repositoryClass="App\Repository\AppointmentRepository")
+*/
 class Appointment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    Protected $id;
+    protected $id;
 
     #[ORM\Column(type: 'datetime')]
-    Protected $Date;
+    protected $Date;
 
     #[ORM\ManyToOne(targetEntity: Doctor::class, inversedBy: 'appointments')]
-    Protected $Doctor;
+    protected $Doctor;
 
     #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'appointments')]
-    Protected $Patient;
+    protected $Patient;
 
     public function getId(): ?int
     {

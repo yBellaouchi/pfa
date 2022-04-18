@@ -15,7 +15,7 @@ class Nurse
 
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $FirstName;
+    public $FirstName;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $LastName;

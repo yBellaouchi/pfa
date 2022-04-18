@@ -5,12 +5,16 @@ namespace App\Controller;
 use App\Entity\Nurse;
 use App\Form\NurseType;
 use App\Form\NurseSearchType;
+use App\Form\NursePlanningType;
+
 use App\Repository\NurseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Form\Extension\Core\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
@@ -18,6 +22,11 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 #[Route('/nurse')]
 class NurseController extends AbstractController
 {
+
+    public function __construct( )
+    {
+        
+    }
     
  /**
      * @Route("/", name="list_nurses")
@@ -73,7 +82,7 @@ class NurseController extends AbstractController
 
   
      /**
-     * @Route("/{id}", name="show_nurse")
+     * @Route("/{id}/showNurse", name="show_nurse")
      *
      */
     public function show(Nurse $nurse): Response
@@ -130,4 +139,47 @@ class NurseController extends AbstractController
             
             }
     
+       
+    
+              /**
+     * @Route("/planning", name="planning_nurse")
+     *
+     */
+
+   
+    public function planning(Request $request):Response{
+     
+        $form = $this->createForm(NursePlanningType::class);
+        $form->handleRequest($request);
+         
+        $nursesMorning=new ArrayCollection();
+        $nurses=new ArrayCollection();
+        $nurse=new Nurse();
+        if ($form->isSubmitted()&& $form->isValid()) {
+             
+           
+           
+             $group=$form['Group']->getData();
+             $nurse= $form['FirstName']->getData();
+            $firstName=$nurse->FirstName;
+            
+         if($group="mornig group"){
+             $nurses[]=$firstName;
+         }
+         else if ($group="evening group"){
+            $nurses[]=$firstName;
+        }else {
+            $nurses[]=$firstName;
+        }
+         
+            return $this->redirectToRoute('planning_nurse', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('nurse/planning.htm.twig', [
+             'nurses' => $nurses,
+            'form' => $form,
+        ]);
+    
+    }
+
 }
