@@ -32,8 +32,8 @@ class PatientController extends AbstractController
        
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $firstName = $form['FirstName']->getData();
-            $patients = $entityManager->getRepository(Patient::class)->findBy( ['FirstName' => $firstName]);
+            $FullName = $form['FullName']->getData();
+            $patients = $entityManager->getRepository(Patient::class)->findBy( ['FullName' => $FullName]);
           
            
         }

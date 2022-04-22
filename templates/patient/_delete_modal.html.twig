@@ -11,7 +11,8 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-             Sure to delete {{[ patient.LastName, ' ', patient.FirstName ] | join }} !!
+             {# Sure to delete {{[ patient.LastName, ' ', patient.FullName ] | join }} !! #}
+             Sure to Delete {{patient.FullName}}!!
          </div>
         
         <!-- Modal footer -->

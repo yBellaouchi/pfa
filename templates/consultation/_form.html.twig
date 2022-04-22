@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+    {# {{ form_widget(form) }} #}
+ 
+<div class="container" >
+       
+ <div class="col-sm-8 center-block" >
+
+               
+            <div class="body">
+                        <div class="form-group">
+                 {{ form_label(form.Doctor) }}
+                {{ form_widget(form.Doctor, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.Doctor) }}
+                {{ form_errors(form.Doctor) }}
+                        </div>
+                        <div class="form-group">
+                           {{ form_label(form.Patient) }}
+                {{ form_widget(form.Patient, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.Patient) }}
+                {{ form_errors(form.Patient) }}
+                        </div>
+                        <div class="form-group">
+                 {{ form_label(form.Date) }}
+                {{ form_widget(form.Date) }}
+                {{ form_help(form.Date) }}
+                {{ form_errors(form.Date) }}
+                        </div>
+                
+             </div>
+                   <div class="footer">
+                      <button class="btn btn-primary" >{{ button_label|default('Save') }}</button>
+                    </div>
+            </div>
+ </div>
+    
+{{ form_end(form) }}
+{# ModalAdd #}
+ {#   #}

@@ -163,21 +163,21 @@ class NurseController extends AbstractController
            
              $group=$form['Group']->getData();
              $nurse= $form['FirstName']->getData();
-            $firstName=$nurse->FirstName;
+            $FullName=$nurse->FullName;
             
             // $nurses=['amin  ','salim ','hamid'];
          if($group="mornig group"){
-            $nursesMorning[]=$firstName;
+            $nursesMorning[]=$FullName;
          }
          else if ($group="evening group"){
-            $nursesEvening[]=$firstName;
+            $nursesEvening[]=$FullName;
         }else {
-            $nursesNight[]=$firstName;
+            $nursesNight[]=$FullName;
         }
           
             return $this->redirectToRoute('planning_nurse', [], Response::HTTP_SEE_OTHER);
         }
-        dd($nursesMorning);
+        // dd($nursesMorning);
 
         return $this->renderForm('nurse/planning.htm.twig', [
              'nursesMorning' => $nursesMorning,

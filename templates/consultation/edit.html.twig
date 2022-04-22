@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Consultation{% endblock %}
+
+{% block body %}
+    <h1>Edit Consultation</h1>
+
+  
+   {{ include('consultation/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

@@ -16,8 +16,8 @@ class DoctorType extends AbstractType
             ->add('Password')
             ->add('Cin')
             // ->add('roles')
-            ->add('FirstName')
-            ->add('LastName')
+            // ->add('FirstName')
+             ->add('FullName')
             ->add('Telelphone')
             ->add('speciality')
         ;

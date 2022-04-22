@@ -14,7 +14,7 @@
                 {##}
                     <div class="d-flex flex-column align-items-center" <img class="photo" src="https://images.unsplash.com/photo-1541647376583-8934aaf3448a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="">
 
-                        <p class="fw-bold h4 mt-3">{{ [patient.LastName|upper, ' ', patient.FirstName, ] | join }}</p>
+                        <p class="fw-bold h4 mt-3">{{ [patient.LastName|upper, ' ', patient.FullName, ] | join }}</p>
                        
                         <div class="d-flex ">
                             <a href="{{ path('edit_patient', {'id': patient.id}) }}"  class="btn btn-primary follow me-2" >edit</a>
@@ -32,12 +32,12 @@
                    
                     <div class="d-flex align-items-center justify-content-between border-bottom">
                         <p class="py-2">First Name</p>
-                        <p class="py-2 text-muted">{{ patient.FirstName }}</p>
+                        <p class="py-2 text-muted">{{ patient.FullName }}</p>
                     </div>
-                    <div class="d-flex align-items-center justify-content-between border-bottom">
+                    {# <div class="d-flex align-items-center justify-content-between border-bottom">
                         <p class="py-2">Last Name</p>
                         <p class="py-2 text-muted">{{ patient.LastName }}</p>
-                    </div>
+                    </div> #}
                     <div class="d-flex align-items-center justify-content-between border-bottom">
                         <p class="py-2">Cin</p>
                         <p class="py-2 text-muted">{{ patient.Cin }}</p>

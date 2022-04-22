@@ -17,7 +17,7 @@ class NursePlanningType extends AbstractType
     {
         $builder
 
-        ->add('FirstName',EntityType::class,array('class'=>'App\Entity\Nurse','choice_label' => 'FirstName'))
+        ->add('FullName',EntityType::class,array('class'=>'App\Entity\Nurse','choice_label' => 'FullName'))
         ->add('Group', ChoiceType::class, [
             'label' => 'Category',
             'placeholder' => 'Groupes',

@@ -28,16 +28,16 @@ class User
     #[ORM\Column(type: 'string', length: 255)]
     protected $Cin;
     #[ORM\Column(type: 'string', length: 255)]
-    private $FullName;
+    protected $FullName;
 
   
 
-    public function getName(): ?string
+    public function getFullName(): ?string
     {
         return $this->FullName;
     }
 
-    public function setName(string $FullName): self
+    public function setFullName(string $FullName): self
     {
         $this->FullName = $FullName;
 

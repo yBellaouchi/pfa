@@ -1,5 +1,5 @@
 {# Modal Delete #}
-    <div class="modal fade"  id="delete{{nurse.id}}">
+    <div class="modal fade"  id="delete{{consultation.id}}">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
       
@@ -11,13 +11,14 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-             Sure to delete {{nurse.FullName}} !!
+             {# Sure to delete {{[ patient.LastName, ' ', patient.FirstName ] | join }} !! #}
+             Sure to delete
          </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-           <a href="deleteNurse/{{nurse.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> delete</a>
+           <a href="deleteConsultation/{{consultation.id}}" class="btn btn-primary"><span class="glyphicon glyphicon-trash"></span> delete</a>
         </div>
         
       </div>

@@ -21,15 +21,15 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 
-/**
- * ORM\Entity(repositoryClass=AppointmentRepository::class)
- * @ORM\InheritanceType("JOINED")
- * @RM\DiscriminatorColumn(name="type",type="string")
- * @ORM\DiscriminatorMap({"consultation"="Consultation","operation"="Operation"})
- *    * @ORM\InheritanceType("SINGLE_TABLE")
- *     
- * 
- */
+// /**
+//  * ORM\Entity(repositoryClass=AppointmentRepository::class)
+//  * @ORM\InheritanceType("JOINED")
+//  * @RM\DiscriminatorColumn(name="type",type="string")
+//  * @ORM\DiscriminatorMap({"consultation"="Consultation","operation"="Operation"})
+//  *    * @ORM\InheritanceType("SINGLE_TABLE")
+//  *     
+//  * 
+//  */
 
  
 
@@ -50,10 +50,10 @@ use Doctrine\ORM\Mapping as ORM;
     protected $Date;
 
     #[ORM\ManyToOne(targetEntity: Doctor::class, inversedBy: 'appointments')]
-    private $Doctor;
+    protected $Doctor;
 
     #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'appointments')]
-    private $Patient;
+    protected $Patient;
 
     public function getId(): ?int
     {

@@ -13,10 +13,10 @@
                
             <div class="body" display="inline">
                         <div class="form-group">
-                 {{ form_label(form.FirstName) }}
-                {{ form_widget(form.FirstName, {'attr': {'class': 'form-control'}}) }}
-                {{ form_help(form.FirstName) }}
-                {{ form_errors(form.FirstName) }}
+                 {{ form_label(form.FullName) }}
+                {{ form_widget(form.FullName, {'attr': {'class': 'form-control'}}) }}
+                {{ form_help(form.FullName) }}
+                {{ form_errors(form.FullName) }}
                         </div>
                         <div class="form-group">
                            {{ form_label(form.Group) }}
@@ -30,23 +30,25 @@
                       <button type="submit" class="btn btn-primary" >{{ button_label|default('Save') }}</button>
                     </div>
 
-
+  {# {% set nursesMorningg = [1, 2, 3] %} #}
+    {# {{ dump(nursesMorningg) }} #}
     <table class="table table-striped table-hover" class="col-sm-8">
                     <thead>
 
                         <tr>
                          
-                            <th>FirstName</th>
+                            <th>Group A</th>
                          
                         </tr>
                     </thead>
                    <tbody>
-                   {% for nurse in nurses %}
+                   {{dump(nursesMorning)}}
+                   {% for nurse in nursesMorning %}
                    
                       <tr>
-                            
-                            <td>{{ nurse.strenghts}}</td>
-                          {{ dump( nurse.strenghts)}}
+                            {# {% if category.subcategories|length > 0 %} #}
+                            <td>{{ nurse }}</td>
+                          {{ dump() }}
                         
                         </tr>
                         {% else %}
@@ -57,7 +59,66 @@
 
 
   {% endfor %}
-  </tbody>                      
+  </tbody>                    
+  </table>
+
+      <table class="table table-striped table-hover" class="col-sm-8">
+                    <thead>
+
+                        <tr>
+                         
+                            <th>Group B</th>
+                         
+                        </tr>
+                    </thead>
+                   <tbody>
+                   {{dump(nursesEvening)}}
+                   {% for nurse in nursesEvening %}
+                   
+                      <tr>
+                            {# {% if category.subcategories|length > 0 %} #}
+                            <td>{{ nurse }}</td>
+                          {{ dump() }}
+                        
+                        </tr>
+                        {% else %}
+        <li><em>no user found</em></li>
+
+
+ 
+
+
+  {% endfor %}
+  </tbody>                    
+  </table>
+      <table class="table table-striped table-hover" class="col-sm-8">
+                    <thead>
+
+                        <tr>
+                         
+                            <th>Group C</th>
+                         
+                        </tr>
+                    </thead>
+                   <tbody>
+                   {{dump(nursesNight)}}
+                   {% for nurse in nursesNight %}
+                   
+                      <tr>
+                            {# {% if category.subcategories|length > 0 %} #}
+                            <td>{{ nurse }}</td>
+                          {{ dump() }}
+                        
+                        </tr>
+                        {% else %}
+        <li><em>no user found</em></li>
+
+
+ 
+
+
+  {% endfor %}
+  </tbody>                    
   </table>
   {{ form_end(form) }}
 

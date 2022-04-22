@@ -15,7 +15,7 @@ class NurseSearchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('FirstName',TextType::class)
+            ->add('FullName',TextType::class)
             ->add('Search',SubmitType::class)
         ;
     }

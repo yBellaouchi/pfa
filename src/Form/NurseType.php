@@ -15,8 +15,8 @@ class NurseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('FirstName',TextType::class)
-            ->add('LastName',TextType::class)
+            ->add('FullName',TextType::class)
+            // ->add('LastName',TextType::class)
             ->add('Cin',TextType::class)           
             ->add('Gender', ChoiceType::class, [
                 'label' => 'Gender',

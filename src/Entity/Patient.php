@@ -17,10 +17,10 @@ class Patient
     protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $FirstName;
+    private $FullName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $LastName;
+    // #[ORM\Column(type: 'string', length: 255)]
+    // private $LastName;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $Cin;
@@ -51,14 +51,14 @@ class Patient
     }
 
 
-    public function getFirstName(): ?string
+    public function getFullName(): ?string
     {
-        return $this->FirstName;
+        return $this->FullName;
     }
 
-    public function setFirstName(string $FirstName): self
+    public function setFullName(string $FullName): self
     {
-        $this->FirstName = $FirstName;
+        $this->FullName = $FullName;
 
         return $this;
     }

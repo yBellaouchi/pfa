@@ -31,9 +31,9 @@ margin-right: 0px;
                    </div>
                      <div class="input-group-append" style="margin-left: 50%;">
                    
-                       {{ form_widget(form.FirstName, {'attr': {'class': 'input-group-append','placeholder': '   search  nurse'}}) }}
-                       {{ form_help(form.FirstName) }}
-                       {{ form_errors(form.FirstName) }}
+                       {{ form_widget(form.FullName, {'attr': {'class': 'input-group-append','placeholder': '   search  nurse'}}) }}
+                       {{ form_help(form.FullName) }}
+                       {{ form_errors(form.FullName) }}
                       
                        
                        {{ form_widget(form.Search,{'attr': {'class': 'fa fa-search btn btn-info'}})}}
@@ -58,8 +58,8 @@ margin-right: 0px;
                                 </span>
                             </th>  #}
                             <th>#</th>
-                            <th>FirstName</th>
-                            <th>LastName</th>
+                            <th>FullName</th>
+                            {# <th>LastName</th> #}
                             <th>Cin</th>
                             <th>Gender</th>
                              <th>Tel</th>
@@ -76,8 +76,8 @@ margin-right: 0px;
                                 </span>
                             </td>  #}
                             <td>{{ nurse.id }}</td>
-                            <td>{{ nurse.FirstName }}</td>
-                            <td>{{ nurse.LastName }}</td>
+                            <td>{{ nurse.FullName }}</td>
+                            {# <td>{{ nurse.LastName }}</td> #}
                             <td>{{ nurse.Cin }}</td>
                             <td>{{ nurse.Gender }}</td>
                             <td>{{ nurse.Tel }}</td>
