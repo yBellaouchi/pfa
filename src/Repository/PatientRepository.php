@@ -48,7 +48,7 @@ class PatientRepository extends ServiceEntityRepository
     // /**
     //  * @return Patient[] Returns an array of Patient objects
     //  */
-    /*
+    
     public function findByExampleField($value)
     {
         return $this->createQueryBuilder('p')
@@ -60,7 +60,7 @@ class PatientRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Patient

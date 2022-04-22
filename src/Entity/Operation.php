@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: OperationRepository::class)]
 class Operation extends Appointment
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    protected $id;
+    // #[ORM\Id]
+    // #[ORM\GeneratedValue]
+    // #[ORM\Column(type: 'integer')]
+    // protected $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $Type;
+    // #[ORM\Column(type: 'string', length: 255)]
+    // private $TypeOperation;
 
     #[ORM\ManyToOne(targetEntity: Room::class, inversedBy: 'Operations')]
     private $Room;
@@ -60,15 +60,15 @@ class Operation extends Appointment
         return $this;
     }
 
-    public function getRoom(): ?Room
-    {
-        return $this->Room;
-    }
+    // public function getRoom(): ?Room
+    // {
+    //     return $this->Room;
+    // }
 
-    public function setRoom(?Room $Room): self
-    {
-        $this->Room = $Room;
+    // public function setRoom(?Room $Room): self
+    // {
+    //     $this->Room = $Room;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

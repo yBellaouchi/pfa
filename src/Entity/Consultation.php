@@ -8,13 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ConsultationRepository::class)]
 class Consultation extends Appointment
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    protected $id;
+    // #[ORM\Id]
+    // #[ORM\GeneratedValue]
+    // #[ORM\Column(type: 'integer')]
+    // protected $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $Type;
+    // #[ORM\Column(type: 'string', length: 255)]
+    // private $TypeConsultation;
 
 
     public function getId(): ?int

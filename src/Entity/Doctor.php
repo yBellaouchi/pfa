@@ -5,21 +5,27 @@ namespace App\Entity;
 use App\Repository\DoctorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+
+
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\User;
+use App\Entity\Speciality;
+
 
 #[ORM\Entity(repositoryClass: DoctorRepository::class)]
+
 class Doctor extends User
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    protected $id;
+    // #[ORM\Id]
+    // #[ORM\GeneratedValue]
+    // #[ORM\Column(type: 'integer')]
+    // protected $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $FirstName;
+    // #[ORM\Column(type: 'string', length: 255)]
+    // private $FirstName;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $LastName;
+    // #[ORM\Column(type: 'string', length: 255)]
+    // private $LastName;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $Telelphone;
@@ -50,29 +56,29 @@ class Doctor extends User
         return $this->id;
     }
 
-    public function getFirstName(): ?string
-    {
-        return $this->FirstName;
-    }
+    // public function getFirstName(): ?string
+    // {
+    //     return $this->FirstName;
+    // }
 
-    public function setFirstName(string $FirstName): self
-    {
-        $this->FirstName = $FirstName;
+    // public function setFirstName(string $FirstName): self
+    // {
+    //     $this->FirstName = $FirstName;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getLastName(): ?string
-    {
-        return $this->LastName;
-    }
+    // public function getLastName(): ?string
+    // {
+    //     return $this->LastName;
+    // }
 
-    public function setLastName(string $LastName): self
-    {
-        $this->LastName = $LastName;
+    // public function setLastName(string $LastName): self
+    // {
+    //     $this->LastName = $LastName;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getTelelphone(): ?string
     {

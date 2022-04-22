@@ -4,28 +4,49 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
+#[InheritanceType("SINGLE_TABLE")]
+#[DiscriminatorColumn(name:"Role",type:"string")]
+#[DiscriminatorMap(["admin" => Admin::class, "doctor" => Doctor::class])]
 class User
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    Protected $id;
+    protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    Protected $Login;
+    protected $Login;
 
     #[ORM\Column(type: 'string', length: 255)]
-    Protected $Password;
+    protected $Password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    Protected $Cin;
-
-
+    protected $Cin;
     #[ORM\Column(type: 'string', length: 255)]
-    Protected $roles;
+    private $FullName;
+
+  
+
+    public function getName(): ?string
+    {
+        return $this->FullName;
+    }
+
+    public function setName(string $FullName): self
+    {
+        $this->FullName = $FullName;
+
+        return $this;
+    }
+
+
+    // #[ORM\Column(type: 'string', length: 255)]
+    // protected $Role;
 
     public function getId(): ?int
     {
@@ -69,14 +90,14 @@ class User
         return $this;
     }
 
-    public function getRoles(): ?string
+    public function getRole(): ?string
     {
-        return $this->roles;
+        return $this->role;
     }
 
-    public function setRoles(string $roles): self
+    public function setRoles(string $role): self
     {
-        $this->roles = $roles;
+        $this->role = $role;
 
         return $this;
     }

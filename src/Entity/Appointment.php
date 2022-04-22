@@ -1,26 +1,59 @@
 <?php
 
 namespace App\Entity;
+use App\Entity\Consultation;
+use App\Entity\Operation;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
 
 use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: AppointmentRepository::class)]
-class Appointment
+
+
+
+
+
+
+
+
+
+
+/**
+ * ORM\Entity(repositoryClass=AppointmentRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @RM\DiscriminatorColumn(name="type",type="string")
+ * @ORM\DiscriminatorMap({"consultation"="Consultation","operation"="Operation"})
+ *    * @ORM\InheritanceType("SINGLE_TABLE")
+ *     
+ * 
+ */
+
+ 
+
+#[ORM\Entity(repositoryClass:AppointmentRepository::class)]
+#[InheritanceType("SINGLE_TABLE")]
+#[DiscriminatorColumn(name:"type_appoinment",type:"string")]
+#[DiscriminatorMap(["consultation" => Consultation::class, "operation" => Operation::class])]
+
+
+ abstract class Appointment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    Protected $id;
+    protected $id;
 
     #[ORM\Column(type: 'datetime')]
-    Protected $Date;
+    protected $Date;
 
     #[ORM\ManyToOne(targetEntity: Doctor::class, inversedBy: 'appointments')]
-    Protected $Doctor;
+    private $Doctor;
 
     #[ORM\ManyToOne(targetEntity: Patient::class, inversedBy: 'appointments')]
-    Protected $Patient;
+    private $Patient;
 
     public function getId(): ?int
     {
