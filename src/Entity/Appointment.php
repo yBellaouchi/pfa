@@ -7,15 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 
 
-/**
- * 
- * 
- * @ORM\Entity
- * @InheritanceType("SINGLE_TABLE")
- * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"appointment" = "Appointment", "consultation" = "Consultation", "operation" = "Operation"})
- * @ORM\Entity(repositoryClass="App\Repository\AppointmentRepository")
-*/
+#[ORM\Entity(repositoryClass:AppointmentRepository::class)]
+
 class Appointment
 {
     #[ORM\Id]

@@ -12,20 +12,20 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    protected $id;
+    Protected $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    protected $Login;
+    Protected $Login;
 
     #[ORM\Column(type: 'string', length: 255)]
-    protected $Password;
+    Protected $Password;
 
     #[ORM\Column(type: 'string', length: 255)]
-    protected $Cin;
+    Protected $Cin;
 
 
     #[ORM\Column(type: 'string', length: 255)]
-    protected $roles;
+    Protected $roles;
 
     public function getId(): ?int
     {

@@ -153,7 +153,9 @@ class NurseController extends AbstractController
         $form->handleRequest($request);
          
         $nursesMorning=new ArrayCollection();
-        $nurses=new ArrayCollection();
+        $nursesEvening=new ArrayCollection();
+        $nursesNight=new ArrayCollection();
+        
         $nurse=new Nurse();
         if ($form->isSubmitted()&& $form->isValid()) {
              
@@ -163,20 +165,25 @@ class NurseController extends AbstractController
              $nurse= $form['FirstName']->getData();
             $firstName=$nurse->FirstName;
             
+            // $nurses=['amin  ','salim ','hamid'];
          if($group="mornig group"){
-             $nurses[]=$firstName;
+            $nursesMorning[]=$firstName;
          }
          else if ($group="evening group"){
-            $nurses[]=$firstName;
+            $nursesEvening[]=$firstName;
         }else {
-            $nurses[]=$firstName;
+            $nursesNight[]=$firstName;
         }
-         
+          
             return $this->redirectToRoute('planning_nurse', [], Response::HTTP_SEE_OTHER);
         }
+        dd($nursesMorning);
 
         return $this->renderForm('nurse/planning.htm.twig', [
-             'nurses' => $nurses,
+             'nursesMorning' => $nursesMorning,
+             'nursesEvening' => $nursesEvening,
+             'nursesNight' => $nursesNight,
+            
             'form' => $form,
         ]);
     
